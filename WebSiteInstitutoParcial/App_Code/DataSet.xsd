@@ -1,0 +1,937 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet" targetNamespace="http://tempuri.org/DataSet.xsd" xmlns:mstns="http://tempuri.org/DataSet.xsd" xmlns="http://tempuri.org/DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="InstitutoParcialConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="InstitutoParcialConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.InstitutoParcialConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DepartamentoTableAdapter" GeneratorDataComponentClassName="DepartamentoTableAdapter" Name="Departamento" UserDataComponentName="DepartamentoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="InstitutoParcial.dbo.Departamento" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetDepartamentos" GetMethodModifier="Public" GetMethodName="GetDepartamentos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDepartamentos" UserSourceName="GetDepartamentos">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        codigo_departamento AS Codigo, nombre_departamento AS Departamento
+FROM            Departamento</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="Departamento" DataSetColumn="Departamento" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProfesorTableAdapter" GeneratorDataComponentClassName="ProfesorTableAdapter" Name="Profesor" UserDataComponentName="ProfesorTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetProfesores" GetMethodModifier="Public" GetMethodName="GetProfesores" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetProfesores" UserSourceName="GetProfesores">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Profesor.dpi_profesor AS Dpi, Profesor.nombres_profesor AS Nombre, Profesor.apellidos_profesor AS Apellido, Profesor.direccion_profesor AS Direccion, 
+                         Profesor.telefono_profesor AS Telefono, Profesor.usuario_profesor AS Usuario, Profesor.contrasenia AS Contrasenia, Municipio.nombre_municipio AS Municipio, 
+                         Departamento.nombre_departamento AS Departamento
+FROM            Profesor INNER JOIN
+                         Municipio ON Profesor.codigo_municipio = Municipio.codigo_municipio INNER JOIN
+                         Departamento ON Municipio.codigo_departamento = Departamento.codigo_departamento
+WHERE        (Profesor.estado_profesor = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Dpi" DataSetColumn="Dpi" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Apellido" DataSetColumn="Apellido" />
+              <Mapping SourceColumn="Direccion" DataSetColumn="Direccion" />
+              <Mapping SourceColumn="Telefono" DataSetColumn="Telefono" />
+              <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
+              <Mapping SourceColumn="Contrasenia" DataSetColumn="Contrasenia" />
+              <Mapping SourceColumn="Municipio" DataSetColumn="Municipio" />
+              <Mapping SourceColumn="Departamento" DataSetColumn="Departamento" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarProfesor" Modifier="Public" Name="ActualizarProfesor" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ActualizarProfesor">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Profesor
+SET                nombres_profesor = @nombre, apellidos_profesor = @apellido, direccion_profesor = @direccion, telefono_profesor = @telefono, usuario_profesor = @usuario, 
+                         contrasenia = @contrasenia, codigo_municipio = @codigoMunicipio
+WHERE        (dpi_profesor = @dpi)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="nombre" ColumnName="nombres_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="nombres_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="apellido" ColumnName="apellidos_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@apellido" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="apellidos_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="direccion" ColumnName="direccion_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@direccion" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="direccion_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="telefono" ColumnName="telefono_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(12)" DbType="String" Direction="Input" ParameterName="@telefono" Precision="0" ProviderType="NVarChar" Scale="0" Size="12" SourceColumn="telefono_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="usuario" ColumnName="usuario_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="usuario_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="contrasenia" ColumnName="contrasenia" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@contrasenia" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoMunicipio" ColumnName="codigo_municipio" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoMunicipio" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_municipio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="dpi" ColumnName="dpi_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(13)" DbType="String" Direction="Input" ParameterName="@dpi" Precision="0" ProviderType="NVarChar" Scale="0" Size="13" SourceColumn="dpi_profesor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AgregarProfesor" Modifier="Public" Name="AgregarProfesor" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="AgregarProfesor">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO Profesor
+                         (dpi_profesor, nombres_profesor, apellidos_profesor, direccion_profesor, telefono_profesor, estado_profesor, usuario_profesor, contrasenia, codigo_municipio)
+VALUES        (@dpi,@nombre,@apellido,@direccion,@telefono, 1,@usuario,@contrasenia,@codigoMunicipio)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="dpi" ColumnName="dpi_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(13)" DbType="String" Direction="Input" ParameterName="@dpi" Precision="0" ProviderType="NVarChar" Scale="0" Size="13" SourceColumn="dpi_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nombre" ColumnName="nombres_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="nombres_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="apellido" ColumnName="apellidos_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@apellido" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="apellidos_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="direccion" ColumnName="direccion_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@direccion" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="direccion_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="telefono" ColumnName="telefono_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(12)" DbType="String" Direction="Input" ParameterName="@telefono" Precision="0" ProviderType="NVarChar" Scale="0" Size="12" SourceColumn="telefono_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="usuario" ColumnName="usuario_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="usuario_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="contrasenia" ColumnName="contrasenia" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@contrasenia" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoMunicipio" ColumnName="codigo_municipio" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoMunicipio" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_municipio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarTempProfesor" Modifier="Public" Name="EliminarTempProfesor" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EliminarTempProfesor">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Profesor
+SET                estado_profesor = 0
+WHERE        (dpi_profesor = @dpi)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="dpi" ColumnName="dpi_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(13)" DbType="String" Direction="Input" ParameterName="@dpi" Precision="0" ProviderType="NVarChar" Scale="0" Size="13" SourceColumn="dpi_profesor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetProfesorPorDpi" GetMethodModifier="Public" GetMethodName="GetProfesorPorDpi" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetProfesorPorDpi" UserSourceName="GetProfesorPorDpi">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Profesor.dpi_profesor AS Dpi, Profesor.nombres_profesor AS Nombre, Profesor.apellidos_profesor AS Apellido, Profesor.direccion_profesor AS Direccion, 
+                         Profesor.telefono_profesor AS Telefono, Profesor.usuario_profesor AS Usuario, Profesor.contrasenia AS Contrasenia, Municipio.nombre_municipio AS Municipio, 
+                         Departamento.nombre_departamento AS Departamento, Profesor.codigo_municipio AS CodigoMunicipio, 
+                         Municipio.codigo_departamento AS CodigoDepartamento
+FROM            Profesor INNER JOIN
+                         Municipio ON Profesor.codigo_municipio = Municipio.codigo_municipio INNER JOIN
+                         Departamento ON Municipio.codigo_departamento = Departamento.codigo_departamento
+WHERE        (Profesor.dpi_profesor = @dpi)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="dpi" ColumnName="dpi_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(13)" DbType="String" Direction="Input" ParameterName="@dpi" Precision="0" ProviderType="NVarChar" Scale="0" Size="13" SourceColumn="Dpi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="InicioSesionProfesor" GetMethodModifier="Public" GetMethodName="InicioSesionProfesor" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="InicioSesionProfesor" UserSourceName="InicioSesionProfesor">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Profesor.dpi_profesor AS Dpi, Profesor.nombres_profesor AS Nombre, Profesor.apellidos_profesor AS Apellido, Profesor.direccion_profesor AS Direccion, 
+                         Profesor.telefono_profesor AS Telefono, Profesor.usuario_profesor AS Usuario, Profesor.contrasenia AS Contrasenia, Municipio.nombre_municipio AS Municipio, 
+                         Departamento.nombre_departamento AS Departamento
+FROM            Profesor INNER JOIN
+                         Municipio ON Profesor.codigo_municipio = Municipio.codigo_municipio INNER JOIN
+                         Departamento ON Municipio.codigo_departamento = Departamento.codigo_departamento
+WHERE        (Profesor.estado_profesor = 1) AND (Profesor.usuario_profesor = @usuario) AND (Profesor.contrasenia = @contrasenia)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="usuario" ColumnName="usuario_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="Usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="contrasenia" ColumnName="contrasenia" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@contrasenia" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="Contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MunicipioTableAdapter" GeneratorDataComponentClassName="MunicipioTableAdapter" Name="Municipio" UserDataComponentName="MunicipioTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="InstitutoParcial.dbo.Municipio" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetMunicipiosPorCodigoDepartamento" GetMethodModifier="Public" GetMethodName="GetMunicipiosPorCodigoDepartamento" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetMunicipiosPorCodigoDepartamento" UserSourceName="GetMunicipiosPorCodigoDepartamento">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        codigo_municipio AS Codigo, nombre_municipio AS Municipio
+FROM            Municipio
+WHERE        (codigo_departamento = @codigoDepartamento)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoDepartamento" ColumnName="codigo_departamento" DataSourceName="InstitutoParcial.dbo.Municipio" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoDepartamento" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_departamento" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="Municipio" DataSetColumn="Municipio" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AlumnoTableAdapter" GeneratorDataComponentClassName="AlumnoTableAdapter" Name="Alumno" UserDataComponentName="AlumnoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetAlumnos" GetMethodModifier="Public" GetMethodName="GetAlumnos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetAlumnos" UserSourceName="GetAlumnos">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Alumno.codigo_alumno AS Codigo, Alumno.nombres AS Nombre, Alumno.apellidos AS Apellido, Alumno.fecha_nac AS FechaNacimiento, 
+                         Alumno.direccion AS Direccion, Alumno.correo AS Correo, Alumno.telefono AS Telefono, Alumno.usuario_alumno AS Usuario, Alumno.contrasenia AS Contrasenia, 
+                         Departamento.nombre_departamento AS Departamento, Municipio.nombre_municipio AS Municipio, Alumno.asignado AS Asignado
+FROM            Alumno INNER JOIN
+                         Municipio ON Alumno.codigo_municipio = Municipio.codigo_municipio INNER JOIN
+                         Departamento ON Municipio.codigo_departamento = Departamento.codigo_departamento
+WHERE        (Alumno.estado = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Apellido" DataSetColumn="Apellido" />
+              <Mapping SourceColumn="Direccion" DataSetColumn="Direccion" />
+              <Mapping SourceColumn="Correo" DataSetColumn="Correo" />
+              <Mapping SourceColumn="Telefono" DataSetColumn="Telefono" />
+              <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
+              <Mapping SourceColumn="Contrasenia" DataSetColumn="Contrasenia" />
+              <Mapping SourceColumn="Departamento" DataSetColumn="Departamento" />
+              <Mapping SourceColumn="Municipio" DataSetColumn="Municipio" />
+              <Mapping SourceColumn="Asignado" DataSetColumn="Asignado" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarAlumno" Modifier="Public" Name="ActualizarAlumno" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ActualizarAlumno">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Alumno
+SET                nombres = @nombre, apellidos = @apellido, fecha_nac = @fechaNacimiento, direccion = @direccion, correo = @correo, telefono = @telefono, 
+                         usuario_alumno = @usuario, contrasenia = @contrasenia, codigo_municipio = @codigoMunicipio
+WHERE        (codigo_alumno = @codigo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="nombre" ColumnName="nombres" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="nombres" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="apellido" ColumnName="apellidos" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@apellido" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="apellidos" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fechaNacimiento" ColumnName="fecha_nac" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@fechaNacimiento" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="fecha_nac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="direccion" ColumnName="direccion" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(150)" DbType="String" Direction="Input" ParameterName="@direccion" Precision="0" ProviderType="NVarChar" Scale="0" Size="150" SourceColumn="direccion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="correo" ColumnName="correo" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@correo" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="correo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="telefono" ColumnName="telefono" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(12)" DbType="String" Direction="Input" ParameterName="@telefono" Precision="0" ProviderType="NVarChar" Scale="0" Size="12" SourceColumn="telefono" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="usuario" ColumnName="usuario_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="usuario_alumno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="contrasenia" ColumnName="contrasenia" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nchar(20)" DbType="String" Direction="Input" ParameterName="@contrasenia" Precision="0" ProviderType="NChar" Scale="0" Size="20" SourceColumn="contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoMunicipio" ColumnName="codigo_municipio" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoMunicipio" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_municipio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigo" ColumnName="codigo_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigo" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_alumno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarAlumnoAsignado" Modifier="Public" Name="ActualizarAlumnoAsignado" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="ActualizarAlumnoAsignado">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Alumno
+SET                asignado = 1
+WHERE        (codigo_alumno = @codigoAlumno)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoAlumno" ColumnName="codigo_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigoAlumno" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_alumno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AgregarAlumno" Modifier="Public" Name="AgregarAlumno" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AgregarAlumno">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO Alumno
+                         (codigo_alumno, nombres, apellidos, fecha_nac, direccion, correo, telefono, usuario_alumno, contrasenia, codigo_municipio, estado, asignado)
+VALUES        (@codigo,@nombre,@apellido,@fechaNacimiento,@direccion,@correo,@telefono,@usuario,@contrasenia,@codigoMunicipio, 1, 0)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigo" ColumnName="codigo_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigo" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_alumno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="nombre" ColumnName="nombres" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@nombre" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="nombres" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="apellido" ColumnName="apellidos" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@apellido" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="apellidos" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="fechaNacimiento" ColumnName="fecha_nac" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@fechaNacimiento" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="fecha_nac" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="direccion" ColumnName="direccion" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(150)" DbType="String" Direction="Input" ParameterName="@direccion" Precision="0" ProviderType="NVarChar" Scale="0" Size="150" SourceColumn="direccion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="correo" ColumnName="correo" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@correo" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="correo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="telefono" ColumnName="telefono" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(12)" DbType="String" Direction="Input" ParameterName="@telefono" Precision="0" ProviderType="NVarChar" Scale="0" Size="12" SourceColumn="telefono" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="usuario" ColumnName="usuario_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="usuario_alumno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="contrasenia" ColumnName="contrasenia" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nchar(20)" DbType="String" Direction="Input" ParameterName="@contrasenia" Precision="0" ProviderType="NChar" Scale="0" Size="20" SourceColumn="contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoMunicipio" ColumnName="codigo_municipio" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoMunicipio" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_municipio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ContarRegistros" Modifier="Public" Name="ContarRegistros" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ContarRegistros">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(*) AS Contador
+FROM            Alumno</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarTempAlumno" Modifier="Public" Name="EliminarTempAlumno" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EliminarTempAlumno">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Alumno
+SET                estado = 0
+WHERE        (codigo_alumno = @codigo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigo" ColumnName="codigo_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigo" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_alumno" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetAlumnoAsignado" GetMethodModifier="Public" GetMethodName="GetAlumnoAsignado" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAlumnoAsignado" UserSourceName="GetAlumnoAsignado">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Alumno.codigo_alumno AS Codigo, Alumno.nombres AS Nombre, Alumno.apellidos AS Apellido, Alumno.fecha_nac AS FechaNacimiento, 
+                         Alumno.direccion AS Direccion, Alumno.correo AS Correo, Alumno.telefono AS Telefono, Alumno.usuario_alumno AS Usuario, Alumno.contrasenia AS Contrasenia, 
+                         Departamento.nombre_departamento AS Departamento, Municipio.nombre_municipio AS Municipio, Alumno.asignado AS Asignado
+FROM            Alumno INNER JOIN
+                         Municipio ON Alumno.codigo_municipio = Municipio.codigo_municipio INNER JOIN
+                         Departamento ON Municipio.codigo_departamento = Departamento.codigo_departamento
+WHERE        (Alumno.estado = 1) AND (Alumno.codigo_alumno = @codigoAlumno) AND (Alumno.asignado = 1)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoAlumno" ColumnName="codigo_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigoAlumno" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="Codigo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetAlumnoPorCodigo" GetMethodModifier="Public" GetMethodName="GetAlumnoPorCodigo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAlumnoPorCodigo" UserSourceName="GetAlumnoPorCodigo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Alumno.codigo_alumno AS Codigo, Alumno.nombres AS Nombre, Alumno.apellidos AS Apellido, Alumno.fecha_nac AS FechaNacimiento, 
+                         Alumno.direccion AS Direccion, Alumno.correo AS Correo, Alumno.telefono AS Telefono, Alumno.usuario_alumno AS Usuario, Alumno.contrasenia AS Contrasenia, 
+                         Departamento.nombre_departamento AS Departamento, Municipio.nombre_municipio AS Municipio, Municipio.codigo_municipio AS CodigoMunicipio, 
+                         Municipio.codigo_departamento AS CodigoDepartamento, Alumno.asignado AS Asignado
+FROM            Alumno INNER JOIN
+                         Municipio ON Alumno.codigo_municipio = Municipio.codigo_municipio INNER JOIN
+                         Departamento ON Municipio.codigo_departamento = Departamento.codigo_departamento
+WHERE        (Alumno.codigo_alumno = @codigo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigo" ColumnName="codigo_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigo" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="Codigo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="InicioSesionAlumno" GetMethodModifier="Public" GetMethodName="InicioSesionAlumno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="InicioSesionAlumno" UserSourceName="InicioSesionAlumno">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Alumno.codigo_alumno AS Codigo, Alumno.nombres AS Nombre, Alumno.apellidos AS Apellido, Alumno.fecha_nac AS FechaNacimiento, 
+                         Alumno.direccion AS Direccion, Alumno.correo AS Correo, Alumno.telefono AS Telefono, Alumno.usuario_alumno AS Usuario, Alumno.contrasenia AS Contrasenia, 
+                         Departamento.nombre_departamento AS Departamento, Municipio.nombre_municipio AS Municipio, Alumno.asignado AS Asignado
+FROM            Alumno INNER JOIN
+                         Municipio ON Alumno.codigo_municipio = Municipio.codigo_municipio INNER JOIN
+                         Departamento ON Municipio.codigo_departamento = Departamento.codigo_departamento
+WHERE        (Alumno.estado = 1) AND (Alumno.contrasenia = @contrasenia) AND (Alumno.usuario_alumno = @usuario)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="contrasenia" ColumnName="contrasenia" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nchar(20)" DbType="String" Direction="Input" ParameterName="@contrasenia" Precision="0" ProviderType="NChar" Scale="0" Size="20" SourceColumn="Contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="usuario" ColumnName="usuario_alumno" DataSourceName="InstitutoParcial.dbo.Alumno" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="Usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CursoTableAdapter" GeneratorDataComponentClassName="CursoTableAdapter" Name="Curso" UserDataComponentName="CursoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="InstitutoParcial.dbo.Curso" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetCursos" GetMethodModifier="Public" GetMethodName="GetCursos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetCursos" UserSourceName="GetCursos">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        codigo_curso AS Codigo, nombre_curso AS Curso
+FROM            Curso</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="Curso" DataSetColumn="Curso" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CicloTableAdapter" GeneratorDataComponentClassName="CicloTableAdapter" Name="Ciclo" UserDataComponentName="CicloTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="InstitutoParcial.dbo.Ciclo" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetCiclos" GetMethodModifier="Public" GetMethodName="GetCiclos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetCiclos" UserSourceName="GetCiclos">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        codigo_ciclo AS Codigo, nombre_ciclo AS Ciclo
+FROM            Ciclo
+WHERE        (estado_ciclo = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="Ciclo" DataSetColumn="Ciclo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProfesorCursoTableAdapter" GeneratorDataComponentClassName="ProfesorCursoTableAdapter" Name="ProfesorCurso" UserDataComponentName="ProfesorCursoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetProfesorCurso" GetMethodModifier="Public" GetMethodName="GetProfesorCurso" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetProfesorCurso" UserSourceName="GetProfesorCurso">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Profesor_Curso.codigo_prof_curso AS Codigo, Profesor_Curso.fecha_asignacion AS FechaAsignacion, Curso.nombre_curso AS Curso, Ciclo.nombre_ciclo AS Ciclo, 
+                         Profesor.dpi_profesor AS DPI, Profesor.nombres_profesor AS Nombre, Profesor.apellidos_profesor AS Apellido
+FROM            Ciclo INNER JOIN
+                         Profesor_Curso ON Ciclo.codigo_ciclo = Profesor_Curso.codigo_ciclo INNER JOIN
+                         Curso ON Profesor_Curso.codigo_curso = Curso.codigo_curso INNER JOIN
+                         Profesor ON Profesor_Curso.dpi_profesor = Profesor.dpi_profesor
+WHERE        (Profesor_Curso.estado_prof_curso = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="FechaAsignacion" DataSetColumn="FechaAsignacion" />
+              <Mapping SourceColumn="Curso" DataSetColumn="Curso" />
+              <Mapping SourceColumn="Ciclo" DataSetColumn="Ciclo" />
+              <Mapping SourceColumn="DPI" DataSetColumn="DPI" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Apellido" DataSetColumn="Apellido" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarProfesorCurso" Modifier="Public" Name="ActualizarProfesorCurso" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ActualizarProfesorCurso">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Profesor_Curso
+SET                fecha_asignacion = @fechaAsignacion, codigo_ciclo = @codigoCiclo, dpi_profesor = @dpi, codigo_curso = @codigoCurso
+WHERE        (codigo_prof_curso = @codigo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="fechaAsignacion" ColumnName="fecha_asignacion" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="smalldatetime" DbType="DateTime" Direction="Input" ParameterName="@fechaAsignacion" Precision="0" ProviderType="SmallDateTime" Scale="0" Size="4" SourceColumn="fecha_asignacion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoCiclo" ColumnName="codigo_ciclo" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoCiclo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="dpi" ColumnName="dpi_profesor" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="nvarchar(13)" DbType="String" Direction="Input" ParameterName="@dpi" Precision="0" ProviderType="NVarChar" Scale="0" Size="13" SourceColumn="dpi_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoCurso" ColumnName="codigo_curso" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigoCurso" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_curso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigo" ColumnName="codigo_prof_curso" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_prof_curso" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AgregarProfesorCurso" Modifier="Public" Name="AgregarProfesorCurso" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AgregarProfesorCurso">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO Profesor_Curso
+                         (fecha_asignacion, codigo_ciclo, dpi_profesor, codigo_curso, estado_prof_curso)
+VALUES        (@fechaAsignacion,@codigoCiclo,@dpi,@codigoCurso, 1)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="fechaAsignacion" ColumnName="fecha_asignacion" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="smalldatetime" DbType="DateTime" Direction="Input" ParameterName="@fechaAsignacion" Precision="0" ProviderType="SmallDateTime" Scale="0" Size="4" SourceColumn="fecha_asignacion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoCiclo" ColumnName="codigo_ciclo" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoCiclo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="dpi" ColumnName="dpi_profesor" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="nvarchar(13)" DbType="String" Direction="Input" ParameterName="@dpi" Precision="0" ProviderType="NVarChar" Scale="0" Size="13" SourceColumn="dpi_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoCurso" ColumnName="codigo_curso" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigoCurso" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_curso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="EliminarTempProfesorCurso" Modifier="Public" Name="EliminarTempProfesorCurso" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="EliminarTempProfesorCurso">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Profesor_Curso
+SET                estado_prof_curso = 0
+WHERE        (codigo_prof_curso = @codigo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigo" ColumnName="codigo_prof_curso" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_prof_curso" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="ExisteAsignacion" GetMethodModifier="Public" GetMethodName="ExisteAsignacion" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="ExisteAsignacion" UserSourceName="ExisteAsignacion">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Profesor_Curso.codigo_prof_curso AS Codigo, Profesor_Curso.fecha_asignacion AS FechaAsignacion, Curso.nombre_curso AS Curso, Ciclo.nombre_ciclo AS Ciclo, 
+                         Profesor.dpi_profesor AS DPI, Profesor.nombres_profesor AS Nombre, Profesor.apellidos_profesor AS Apellido
+FROM            Ciclo INNER JOIN
+                         Profesor_Curso ON Ciclo.codigo_ciclo = Profesor_Curso.codigo_ciclo INNER JOIN
+                         Curso ON Profesor_Curso.codigo_curso = Curso.codigo_curso INNER JOIN
+                         Profesor ON Profesor_Curso.dpi_profesor = Profesor.dpi_profesor
+WHERE        (Profesor_Curso.estado_prof_curso = 1) AND (Profesor_Curso.codigo_ciclo = @codigoCiclo) AND (Profesor_Curso.codigo_curso = @codigoCurso)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoCiclo" ColumnName="codigo_ciclo" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoCiclo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoCurso" ColumnName="codigo_curso" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigoCurso" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_curso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetAsignacionCurso" GetMethodModifier="Public" GetMethodName="GetAsignacionCurso" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAsignacionCurso" UserSourceName="GetAsignacionCurso">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Profesor_Curso.codigo_prof_curso AS Codigo, Profesor_Curso.fecha_asignacion AS FechaAsignacion, Curso.nombre_curso AS Curso, Ciclo.nombre_ciclo AS Ciclo, 
+                         Profesor.dpi_profesor AS DPI, Profesor.nombres_profesor AS Nombre, Profesor.apellidos_profesor AS Apellido, Profesor_Curso.codigo_curso AS CodigoCurso, 
+                         Ciclo.codigo_ciclo AS CodigoCiclo
+FROM            Ciclo INNER JOIN
+                         Profesor_Curso ON Ciclo.codigo_ciclo = Profesor_Curso.codigo_ciclo INNER JOIN
+                         Curso ON Profesor_Curso.codigo_curso = Curso.codigo_curso INNER JOIN
+                         Profesor ON Profesor_Curso.dpi_profesor = Profesor.dpi_profesor
+WHERE        (Profesor_Curso.estado_prof_curso = 1) AND (Profesor.dpi_profesor = @dpiProfesor)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="dpiProfesor" ColumnName="dpi_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(13)" DbType="String" Direction="Input" ParameterName="@dpiProfesor" Precision="0" ProviderType="NVarChar" Scale="0" Size="13" SourceColumn="DPI" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetProfesorCursoPorCodigo" GetMethodModifier="Public" GetMethodName="GetProfesorCursoPorCodigo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetProfesorCursoPorCodigo" UserSourceName="GetProfesorCursoPorCodigo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Profesor_Curso.codigo_prof_curso AS Codigo, Profesor_Curso.fecha_asignacion AS FechaAsignacion, Curso.nombre_curso AS Curso, Ciclo.nombre_ciclo AS Ciclo, 
+                         Profesor.dpi_profesor AS DPI, Profesor.nombres_profesor AS Nombre, Profesor.apellidos_profesor AS Apellido, Profesor_Curso.codigo_curso AS CodigoCurso, 
+                         Profesor_Curso.codigo_ciclo AS CodigoCiclo
+FROM            Ciclo INNER JOIN
+                         Profesor_Curso ON Ciclo.codigo_ciclo = Profesor_Curso.codigo_ciclo INNER JOIN
+                         Curso ON Profesor_Curso.codigo_curso = Curso.codigo_curso INNER JOIN
+                         Profesor ON Profesor_Curso.dpi_profesor = Profesor.dpi_profesor
+WHERE        (Profesor_Curso.codigo_prof_curso = @codigo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigo" ColumnName="codigo_prof_curso" DataSourceName="InstitutoParcial.dbo.Profesor_Curso" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Codigo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AdministradorTableAdapter" GeneratorDataComponentClassName="AdministradorTableAdapter" Name="Administrador" UserDataComponentName="AdministradorTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="InstitutoParcial.dbo.Administrador" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetAdministrador" GetMethodModifier="Public" GetMethodName="GetAdministrador" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetAdministrador" UserSourceName="GetAdministrador">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        usuario_administrador AS usuario
+FROM            Administrador
+WHERE        (usuario_administrador = @usuario) AND (contrasenia = @contrasenia)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="usuario" ColumnName="usuario_administrador" DataSourceName="InstitutoParcial.dbo.Administrador" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@usuario" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="contrasenia" ColumnName="contrasenia" DataSourceName="InstitutoParcial.dbo.Administrador" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@contrasenia" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="contrasenia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="usuario" DataSetColumn="usuario" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AsignacionTableAdapter" GeneratorDataComponentClassName="AsignacionTableAdapter" Name="Asignacion" UserDataComponentName="AsignacionTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="InstitutoParcial.dbo.Asignacion" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetAsignacion" GetMethodModifier="Public" GetMethodName="GetAsignacion" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetAsignacion" UserSourceName="GetAsignacion">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        codigo_asignacion AS CodigoAsignacion, fecha_asignacion AS FechaAsignacion, zona AS Zona, final AS Final, total AS Total, resultado AS Resultado, 
+                         estado_delegado AS EstadoDelegado, codigo_alumno AS CodigoAlumno, codigo_prof_curso AS CodigoProfesorCurso, estado_asignacion AS EstadoAsignado
+FROM            Asignacion
+WHERE        (estado_asignacion = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CodigoAsignacion" DataSetColumn="CodigoAsignacion" />
+              <Mapping SourceColumn="FechaAsignacion" DataSetColumn="FechaAsignacion" />
+              <Mapping SourceColumn="Zona" DataSetColumn="Zona" />
+              <Mapping SourceColumn="Final" DataSetColumn="Final" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="Resultado" DataSetColumn="Resultado" />
+              <Mapping SourceColumn="EstadoDelegado" DataSetColumn="EstadoDelegado" />
+              <Mapping SourceColumn="CodigoAlumno" DataSetColumn="CodigoAlumno" />
+              <Mapping SourceColumn="CodigoProfesorCurso" DataSetColumn="CodigoProfesorCurso" />
+              <Mapping SourceColumn="EstadoAsignado" DataSetColumn="EstadoAsignado" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarNota" Modifier="Public" Name="ActualizarNota" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ActualizarNota">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Asignacion
+SET                zona = @zona, final = @final, total = @total, resultado = @resultado
+WHERE        (codigo_asignacion = @codigo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="zona" ColumnName="zona" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@zona" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="zona" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="final" ColumnName="final" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@final" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="final" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="total" ColumnName="total" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@total" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="total" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="resultado" ColumnName="resultado" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="nvarchar(12)" DbType="String" Direction="Input" ParameterName="@resultado" Precision="0" ProviderType="NVarChar" Scale="0" Size="12" SourceColumn="resultado" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigo" ColumnName="codigo_asignacion" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_asignacion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AgregarAsignacion" Modifier="Public" Name="AgregarAsignacion" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AgregarAsignacion">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO Asignacion
+                         (fecha_asignacion, zona, final, total, resultado, estado_delegado, codigo_alumno, codigo_prof_curso, estado_asignacion)
+VALUES        (@fechaAsignacion, 0, 0, 0, N'Reprobado', 0,@codigoAlumno,@codigoProfesorCurso, 1)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="fechaAsignacion" ColumnName="fecha_asignacion" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="smalldatetime" DbType="DateTime" Direction="Input" ParameterName="@fechaAsignacion" Precision="0" ProviderType="SmallDateTime" Scale="0" Size="4" SourceColumn="fecha_asignacion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoAlumno" ColumnName="codigo_alumno" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigoAlumno" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_alumno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoProfesorCurso" ColumnName="codigo_prof_curso" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@codigoProfesorCurso" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="codigo_prof_curso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetAsignacionAlumno" GetMethodModifier="Public" GetMethodName="GetAsignacionAlumno" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAsignacionAlumno" UserSourceName="GetAsignacionAlumno">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Asignacion.codigo_asignacion AS CodigoAsignacion, Asignacion.fecha_asignacion AS FechaAsignacion, Asignacion.zona AS Zona, Asignacion.final AS Final, 
+                         Asignacion.total AS Total, Asignacion.resultado AS Resultado, Asignacion.estado_delegado AS EstadoDelegado, Asignacion.codigo_alumno AS CodigoAlumno, 
+                         Asignacion.codigo_prof_curso AS CodigoProfesorCurso, Asignacion.estado_asignacion AS EstadoAsignado, Ciclo.nombre_ciclo AS Ciclo, 
+                         Curso.nombre_curso AS Curso, Profesor.nombres_profesor AS NombreProfesor, Profesor.apellidos_profesor AS ApellidoProfesor
+FROM            Asignacion INNER JOIN
+                         Profesor_Curso ON Asignacion.codigo_prof_curso = Profesor_Curso.codigo_prof_curso INNER JOIN
+                         Ciclo ON Profesor_Curso.codigo_ciclo = Ciclo.codigo_ciclo INNER JOIN
+                         Curso ON Profesor_Curso.codigo_curso = Curso.codigo_curso INNER JOIN
+                         Profesor ON Profesor_Curso.dpi_profesor = Profesor.dpi_profesor
+WHERE        (Asignacion.estado_asignacion = 1) AND (Asignacion.codigo_alumno = @codigoAlumno)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoAlumno" ColumnName="codigo_alumno" DataSourceName="InstitutoParcial.dbo.Asignacion" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigoAlumno" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="CodigoAlumno" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InstitutoParcialConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetAsignacionProfesor" GetMethodModifier="Public" GetMethodName="GetAsignacionProfesor" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAsignacionProfesor" UserSourceName="GetAsignacionProfesor">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Asignacion.codigo_asignacion AS CodigoAsignacion, Asignacion.fecha_asignacion AS FechaAsignacion, Asignacion.zona AS Zona, Asignacion.final AS Final, 
+                         Asignacion.total AS Total, Asignacion.resultado AS Resultado, Asignacion.estado_delegado AS EstadoDelegado, Asignacion.codigo_alumno AS CodigoAlumno, 
+                         Asignacion.codigo_prof_curso AS CodigoProfesorCurso, Asignacion.estado_asignacion AS EstadoAsignado, Ciclo.nombre_ciclo AS Ciclo, 
+                         Curso.nombre_curso AS Curso, Profesor.nombres_profesor AS NombreProfesor, Profesor.apellidos_profesor AS ApellidoProfesor, Profesor.dpi_profesor, 
+                         Curso.codigo_curso, Alumno.nombres AS NombreAlumno, Alumno.apellidos AS ApellidoAlumno
+FROM            Asignacion INNER JOIN
+                         Profesor_Curso ON Asignacion.codigo_prof_curso = Profesor_Curso.codigo_prof_curso INNER JOIN
+                         Ciclo ON Profesor_Curso.codigo_ciclo = Ciclo.codigo_ciclo INNER JOIN
+                         Curso ON Profesor_Curso.codigo_curso = Curso.codigo_curso INNER JOIN
+                         Profesor ON Profesor_Curso.dpi_profesor = Profesor.dpi_profesor INNER JOIN
+                         Alumno ON Asignacion.codigo_alumno = Alumno.codigo_alumno
+WHERE        (Asignacion.estado_asignacion = 1) AND (Profesor.dpi_profesor = @dpiProfesor) AND (Curso.codigo_curso = @codigoCurso)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="dpiProfesor" ColumnName="dpi_profesor" DataSourceName="InstitutoParcial.dbo.Profesor" DataTypeServer="nvarchar(13)" DbType="String" Direction="Input" ParameterName="@dpiProfesor" Precision="0" ProviderType="NVarChar" Scale="0" Size="13" SourceColumn="dpi_profesor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="codigoCurso" ColumnName="codigo_curso" DataSourceName="InstitutoParcial.dbo.Curso" DataTypeServer="nvarchar(15)" DbType="String" Direction="Input" ParameterName="@codigoCurso" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumn="codigo_curso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DataSet" msprop:Generator_UserDSName="DataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Departamento" msprop:Generator_TableClassName="DepartamentoDataTable" msprop:Generator_TableVarName="tableDepartamento" msprop:Generator_RowChangedName="DepartamentoRowChanged" msprop:Generator_TablePropName="Departamento" msprop:Generator_RowDeletingName="DepartamentoRowDeleting" msprop:Generator_RowChangingName="DepartamentoRowChanging" msprop:Generator_RowEvHandlerName="DepartamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="DepartamentoRowDeleted" msprop:Generator_RowClassName="DepartamentoRow" msprop:Generator_UserTableName="Departamento" msprop:Generator_RowEvArgName="DepartamentoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:int" />
+              <xs:element name="Departamento" msprop:Generator_ColumnVarNameInTable="columnDepartamento" msprop:Generator_ColumnPropNameInRow="Departamento" msprop:Generator_ColumnPropNameInTable="DepartamentoColumn" msprop:Generator_UserColumnName="Departamento">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Profesor" msprop:Generator_TableClassName="ProfesorDataTable" msprop:Generator_TableVarName="tableProfesor" msprop:Generator_RowChangedName="ProfesorRowChanged" msprop:Generator_TablePropName="Profesor" msprop:Generator_RowDeletingName="ProfesorRowDeleting" msprop:Generator_RowChangingName="ProfesorRowChanging" msprop:Generator_RowEvHandlerName="ProfesorRowChangeEventHandler" msprop:Generator_RowDeletedName="ProfesorRowDeleted" msprop:Generator_RowClassName="ProfesorRow" msprop:Generator_UserTableName="Profesor" msprop:Generator_RowEvArgName="ProfesorRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Dpi" msprop:Generator_ColumnVarNameInTable="columnDpi" msprop:Generator_ColumnPropNameInRow="Dpi" msprop:Generator_ColumnPropNameInTable="DpiColumn" msprop:Generator_UserColumnName="Dpi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Apellido" msprop:Generator_ColumnVarNameInTable="columnApellido" msprop:Generator_ColumnPropNameInRow="Apellido" msprop:Generator_ColumnPropNameInTable="ApellidoColumn" msprop:Generator_UserColumnName="Apellido">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Direccion" msprop:Generator_ColumnVarNameInTable="columnDireccion" msprop:Generator_ColumnPropNameInRow="Direccion" msprop:Generator_ColumnPropNameInTable="DireccionColumn" msprop:Generator_UserColumnName="Direccion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Telefono" msprop:Generator_ColumnVarNameInTable="columnTelefono" msprop:Generator_ColumnPropNameInRow="Telefono" msprop:Generator_ColumnPropNameInTable="TelefonoColumn" msprop:Generator_UserColumnName="Telefono">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contrasenia" msprop:Generator_ColumnVarNameInTable="columnContrasenia" msprop:Generator_ColumnPropNameInRow="Contrasenia" msprop:Generator_ColumnPropNameInTable="ContraseniaColumn" msprop:Generator_UserColumnName="Contrasenia">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Municipio" msprop:Generator_ColumnVarNameInTable="columnMunicipio" msprop:Generator_ColumnPropNameInRow="Municipio" msprop:Generator_ColumnPropNameInTable="MunicipioColumn" msprop:Generator_UserColumnName="Municipio">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Departamento" msprop:Generator_ColumnVarNameInTable="columnDepartamento" msprop:Generator_ColumnPropNameInRow="Departamento" msprop:Generator_ColumnPropNameInTable="DepartamentoColumn" msprop:Generator_UserColumnName="Departamento">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Municipio" msprop:Generator_TableClassName="MunicipioDataTable" msprop:Generator_TableVarName="tableMunicipio" msprop:Generator_RowChangedName="MunicipioRowChanged" msprop:Generator_TablePropName="Municipio" msprop:Generator_RowDeletingName="MunicipioRowDeleting" msprop:Generator_RowChangingName="MunicipioRowChanging" msprop:Generator_RowEvHandlerName="MunicipioRowChangeEventHandler" msprop:Generator_RowDeletedName="MunicipioRowDeleted" msprop:Generator_RowClassName="MunicipioRow" msprop:Generator_UserTableName="Municipio" msprop:Generator_RowEvArgName="MunicipioRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:int" />
+              <xs:element name="Municipio" msprop:Generator_ColumnVarNameInTable="columnMunicipio" msprop:Generator_ColumnPropNameInRow="Municipio" msprop:Generator_ColumnPropNameInTable="MunicipioColumn" msprop:Generator_UserColumnName="Municipio">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Alumno" msprop:Generator_TableClassName="AlumnoDataTable" msprop:Generator_TableVarName="tableAlumno" msprop:Generator_TablePropName="Alumno" msprop:Generator_RowDeletingName="AlumnoRowDeleting" msprop:Generator_RowChangingName="AlumnoRowChanging" msprop:Generator_RowEvHandlerName="AlumnoRowChangeEventHandler" msprop:Generator_RowDeletedName="AlumnoRowDeleted" msprop:Generator_UserTableName="Alumno" msprop:Generator_RowChangedName="AlumnoRowChanged" msprop:Generator_RowEvArgName="AlumnoRowChangeEvent" msprop:Generator_RowClassName="AlumnoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Apellido" msprop:Generator_ColumnVarNameInTable="columnApellido" msprop:Generator_ColumnPropNameInRow="Apellido" msprop:Generator_ColumnPropNameInTable="ApellidoColumn" msprop:Generator_UserColumnName="Apellido">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaNacimiento" msprop:Generator_ColumnVarNameInTable="columnFechaNacimiento" msprop:Generator_ColumnPropNameInRow="FechaNacimiento" msprop:Generator_ColumnPropNameInTable="FechaNacimientoColumn" msprop:Generator_UserColumnName="FechaNacimiento" type="xs:string" />
+              <xs:element name="Direccion" msprop:Generator_ColumnVarNameInTable="columnDireccion" msprop:Generator_ColumnPropNameInRow="Direccion" msprop:Generator_ColumnPropNameInTable="DireccionColumn" msprop:Generator_UserColumnName="Direccion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Correo" msprop:Generator_ColumnVarNameInTable="columnCorreo" msprop:Generator_ColumnPropNameInRow="Correo" msprop:Generator_ColumnPropNameInTable="CorreoColumn" msprop:Generator_UserColumnName="Correo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Telefono" msprop:Generator_ColumnVarNameInTable="columnTelefono" msprop:Generator_ColumnPropNameInRow="Telefono" msprop:Generator_ColumnPropNameInTable="TelefonoColumn" msprop:Generator_UserColumnName="Telefono">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contrasenia" msprop:Generator_ColumnVarNameInTable="columnContrasenia" msprop:Generator_ColumnPropNameInRow="Contrasenia" msprop:Generator_ColumnPropNameInTable="ContraseniaColumn" msprop:Generator_UserColumnName="Contrasenia">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Departamento" msprop:Generator_ColumnVarNameInTable="columnDepartamento" msprop:Generator_ColumnPropNameInRow="Departamento" msprop:Generator_ColumnPropNameInTable="DepartamentoColumn" msprop:Generator_UserColumnName="Departamento">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Municipio" msprop:Generator_ColumnVarNameInTable="columnMunicipio" msprop:Generator_ColumnPropNameInRow="Municipio" msprop:Generator_ColumnPropNameInTable="MunicipioColumn" msprop:Generator_UserColumnName="Municipio">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Asignado" msprop:Generator_ColumnVarNameInTable="columnAsignado" msprop:Generator_ColumnPropNameInRow="Asignado" msprop:Generator_ColumnPropNameInTable="AsignadoColumn" msprop:Generator_UserColumnName="Asignado" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Curso" msprop:Generator_TableClassName="CursoDataTable" msprop:Generator_TableVarName="tableCurso" msprop:Generator_TablePropName="Curso" msprop:Generator_RowDeletingName="CursoRowDeleting" msprop:Generator_RowChangingName="CursoRowChanging" msprop:Generator_RowEvHandlerName="CursoRowChangeEventHandler" msprop:Generator_RowDeletedName="CursoRowDeleted" msprop:Generator_UserTableName="Curso" msprop:Generator_RowChangedName="CursoRowChanged" msprop:Generator_RowEvArgName="CursoRowChangeEvent" msprop:Generator_RowClassName="CursoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Curso" msprop:Generator_ColumnVarNameInTable="columnCurso" msprop:Generator_ColumnPropNameInRow="Curso" msprop:Generator_ColumnPropNameInTable="CursoColumn" msprop:Generator_UserColumnName="Curso">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ciclo" msprop:Generator_TableClassName="CicloDataTable" msprop:Generator_TableVarName="tableCiclo" msprop:Generator_TablePropName="Ciclo" msprop:Generator_RowDeletingName="CicloRowDeleting" msprop:Generator_RowChangingName="CicloRowChanging" msprop:Generator_RowEvHandlerName="CicloRowChangeEventHandler" msprop:Generator_RowDeletedName="CicloRowDeleted" msprop:Generator_UserTableName="Ciclo" msprop:Generator_RowChangedName="CicloRowChanged" msprop:Generator_RowEvArgName="CicloRowChangeEvent" msprop:Generator_RowClassName="CicloRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:int" />
+              <xs:element name="Ciclo" msprop:Generator_ColumnVarNameInTable="columnCiclo" msprop:Generator_ColumnPropNameInRow="Ciclo" msprop:Generator_ColumnPropNameInTable="CicloColumn" msprop:Generator_UserColumnName="Ciclo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProfesorCurso" msprop:Generator_TableClassName="ProfesorCursoDataTable" msprop:Generator_TableVarName="tableProfesorCurso" msprop:Generator_TablePropName="ProfesorCurso" msprop:Generator_RowDeletingName="ProfesorCursoRowDeleting" msprop:Generator_RowChangingName="ProfesorCursoRowChanging" msprop:Generator_RowEvHandlerName="ProfesorCursoRowChangeEventHandler" msprop:Generator_RowDeletedName="ProfesorCursoRowDeleted" msprop:Generator_UserTableName="ProfesorCurso" msprop:Generator_RowChangedName="ProfesorCursoRowChanged" msprop:Generator_RowEvArgName="ProfesorCursoRowChangeEvent" msprop:Generator_RowClassName="ProfesorCursoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:int" />
+              <xs:element name="FechaAsignacion" msprop:Generator_ColumnVarNameInTable="columnFechaAsignacion" msprop:Generator_ColumnPropNameInRow="FechaAsignacion" msprop:Generator_ColumnPropNameInTable="FechaAsignacionColumn" msprop:Generator_UserColumnName="FechaAsignacion" type="xs:dateTime" />
+              <xs:element name="Curso" msprop:Generator_ColumnVarNameInTable="columnCurso" msprop:Generator_ColumnPropNameInRow="Curso" msprop:Generator_ColumnPropNameInTable="CursoColumn" msprop:Generator_UserColumnName="Curso">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ciclo" msprop:Generator_ColumnVarNameInTable="columnCiclo" msprop:Generator_ColumnPropNameInRow="Ciclo" msprop:Generator_ColumnPropNameInTable="CicloColumn" msprop:Generator_UserColumnName="Ciclo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DPI" msprop:Generator_ColumnVarNameInTable="columnDPI" msprop:Generator_ColumnPropNameInRow="DPI" msprop:Generator_ColumnPropNameInTable="DPIColumn" msprop:Generator_UserColumnName="DPI">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Apellido" msprop:Generator_ColumnVarNameInTable="columnApellido" msprop:Generator_ColumnPropNameInRow="Apellido" msprop:Generator_ColumnPropNameInTable="ApellidoColumn" msprop:Generator_UserColumnName="Apellido">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Administrador" msprop:Generator_TableClassName="AdministradorDataTable" msprop:Generator_TableVarName="tableAdministrador" msprop:Generator_TablePropName="Administrador" msprop:Generator_RowDeletingName="AdministradorRowDeleting" msprop:Generator_RowChangingName="AdministradorRowChanging" msprop:Generator_RowEvHandlerName="AdministradorRowChangeEventHandler" msprop:Generator_RowDeletedName="AdministradorRowDeleted" msprop:Generator_UserTableName="Administrador" msprop:Generator_RowChangedName="AdministradorRowChanged" msprop:Generator_RowEvArgName="AdministradorRowChangeEvent" msprop:Generator_RowClassName="AdministradorRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="usuario" msprop:Generator_ColumnVarNameInTable="columnusuario" msprop:Generator_ColumnPropNameInRow="usuario" msprop:Generator_ColumnPropNameInTable="usuarioColumn" msprop:Generator_UserColumnName="usuario">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Asignacion" msprop:Generator_TableClassName="AsignacionDataTable" msprop:Generator_TableVarName="tableAsignacion" msprop:Generator_TablePropName="Asignacion" msprop:Generator_RowDeletingName="AsignacionRowDeleting" msprop:Generator_RowChangingName="AsignacionRowChanging" msprop:Generator_RowEvHandlerName="AsignacionRowChangeEventHandler" msprop:Generator_RowDeletedName="AsignacionRowDeleted" msprop:Generator_UserTableName="Asignacion" msprop:Generator_RowChangedName="AsignacionRowChanged" msprop:Generator_RowEvArgName="AsignacionRowChangeEvent" msprop:Generator_RowClassName="AsignacionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoAsignacion" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCodigoAsignacion" msprop:Generator_ColumnPropNameInRow="CodigoAsignacion" msprop:Generator_ColumnPropNameInTable="CodigoAsignacionColumn" msprop:Generator_UserColumnName="CodigoAsignacion" type="xs:int" />
+              <xs:element name="FechaAsignacion" msprop:Generator_ColumnVarNameInTable="columnFechaAsignacion" msprop:Generator_ColumnPropNameInRow="FechaAsignacion" msprop:Generator_ColumnPropNameInTable="FechaAsignacionColumn" msprop:Generator_UserColumnName="FechaAsignacion" type="xs:dateTime" />
+              <xs:element name="Zona" msprop:Generator_ColumnVarNameInTable="columnZona" msprop:Generator_ColumnPropNameInRow="Zona" msprop:Generator_ColumnPropNameInTable="ZonaColumn" msprop:Generator_UserColumnName="Zona" type="xs:int" />
+              <xs:element name="Final" msprop:Generator_ColumnVarNameInTable="columnFinal" msprop:Generator_ColumnPropNameInRow="Final" msprop:Generator_ColumnPropNameInTable="FinalColumn" msprop:Generator_UserColumnName="Final" type="xs:int" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:int" />
+              <xs:element name="Resultado" msprop:Generator_ColumnVarNameInTable="columnResultado" msprop:Generator_ColumnPropNameInRow="Resultado" msprop:Generator_ColumnPropNameInTable="ResultadoColumn" msprop:Generator_UserColumnName="Resultado">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EstadoDelegado" msprop:Generator_ColumnVarNameInTable="columnEstadoDelegado" msprop:Generator_ColumnPropNameInRow="EstadoDelegado" msprop:Generator_ColumnPropNameInTable="EstadoDelegadoColumn" msprop:Generator_UserColumnName="EstadoDelegado" type="xs:boolean" />
+              <xs:element name="CodigoAlumno" msprop:Generator_ColumnVarNameInTable="columnCodigoAlumno" msprop:Generator_ColumnPropNameInRow="CodigoAlumno" msprop:Generator_ColumnPropNameInTable="CodigoAlumnoColumn" msprop:Generator_UserColumnName="CodigoAlumno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodigoProfesorCurso" msprop:Generator_ColumnVarNameInTable="columnCodigoProfesorCurso" msprop:Generator_ColumnPropNameInRow="CodigoProfesorCurso" msprop:Generator_ColumnPropNameInTable="CodigoProfesorCursoColumn" msprop:Generator_UserColumnName="CodigoProfesorCurso" type="xs:int" />
+              <xs:element name="EstadoAsignado" msprop:Generator_ColumnVarNameInTable="columnEstadoAsignado" msprop:Generator_ColumnPropNameInRow="EstadoAsignado" msprop:Generator_ColumnPropNameInTable="EstadoAsignadoColumn" msprop:Generator_UserColumnName="EstadoAsignado" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Departamento" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+    <xs:unique name="Profesor_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Profesor" />
+      <xs:field xpath="mstns:Dpi" />
+    </xs:unique>
+    <xs:unique name="Municipio_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Municipio" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+    <xs:unique name="Alumno_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Alumno" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+    <xs:unique name="Curso_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Curso" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+    <xs:unique name="Ciclo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Ciclo" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+    <xs:unique name="Asignacion_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Asignacion" />
+      <xs:field xpath="mstns:CodigoAsignacion" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
